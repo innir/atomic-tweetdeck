@@ -1,24 +1,30 @@
 {
   "name": "atomic-tweetdeck",
   "productName": "Atomic TweetDeck",
+  "description": "TweetDeck wrapped as an electron app",
+  "productDescription": "TweetDeck wrapped as an electron app",
+  "author": {
+    "name": "Doğan Çelik",
+    "email": "dogancelik93@gmail.com"
+  },
   "version": "0.11.0",
   "license": "MIT",
   "main": "index.js",
-  "electronVersion": "4.0.0",
   "scripts": {
     "start": "electron .",
-    "build": "build.bat build",
-    "zip:zip": "build.bat zip",
-    "zip:tar": "build.bat tar",
-    "zip:osx": "npm run zip:tar -- darwin",
-    "zip:lin": "npm run zip:tar -- linux",
-    "zip:win": "npm run zip:zip -- win32",
-    "zip": "npm run zip:osx && npm run zip:lin && npm run zip:win"
+    "build": "electron-packager . atomic-tweetdeck --platform=linux --arch=x64 --out=build --ignore='build' --icon=favicon.png --overwrite",
+    "deb": "electron-installer-debian --src build/atomic-tweetdeck-linux-x64/ --dest build/installers/ --arch amd64 --options.icon=favicon.png"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dogancelik/atomic-tweetdeck"
   },
   "dependencies": {
-    "configstore": "2.x"
+    "configstore": "5.0.0"
   },
   "devDependencies": {
-    "electron-packager": "^13.0.1"
+    "electron": "^6.0.10",
+    "electron-installer-debian": "2.0.1",
+    "electron-packager": "14.0.6"
   }
 }

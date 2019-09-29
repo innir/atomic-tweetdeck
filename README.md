@@ -28,3 +28,10 @@ or you can just start with *electron*:
 npm install -g electron
 npm run start
 ```
+
+Update all dependencies
+
+```
+npx npm-check-updates -u
+npm install
+```
